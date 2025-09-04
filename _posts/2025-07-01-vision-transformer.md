@@ -24,7 +24,7 @@ Very nice visualization of Fig.1 of [Dosovitskiy et al.](https://arxiv.org/abs/2
 
 
 
-### Patchfication
+### Patchification
 
 * An image ${\bf x}$ of shape `(H, W, 3)` is split into fixed sized patches, where each patch has shape `(P, P, 3)`.  
   * We have 9 patches in the figure.
@@ -111,8 +111,8 @@ Note that ${\bf z}_l \in \mathbb{R}^{10 \times D}$, for $l=0, 1,2, \cdots, L$,
 $$ 
 {\bf z}_l = \left[ 
   \begin{matrix} 
-  && {\bf z}_l^0 &&\\
-  && {\bf z}_l^1 &&\\
+  && \textcolor{red}{\bf z}_l^0 &&\\
+  && \textcolor{green}{\bf z}_l^1 &&\\
   &&  \vdots &&\\
   && {\bf z}_{l}^{9} &&
   \end{matrix}
