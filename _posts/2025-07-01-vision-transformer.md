@@ -26,44 +26,44 @@ Very nice visualization of Fig.1 of [Dosovitskiy et al.](https://arxiv.org/abs/2
 
 ### Patchification
 
-* An image ${\bf x}$ of shape `(H, W, 3)` is split into fixed sized patches, where each patch has shape `(P, P, 3)`.  
+* An image $${\bf x}$$ of shape `(H, W, 3)` is split into fixed sized patches, where each patch has shape `(P, P, 3)`.  
   * We have 9 patches in the figure.
-  * $P$ can be 16 for "16x16 words".
+  * $$P$$ can be 16 for "16x16 words".
 
-* Each patch is flattened to a row vector ${\bf x}_p^i$ of length $3P^2$, for $i=1,2, \cdots, 9$.
-* Linearly embed each of ${\bf x}_p^i$, for $i=1,2, \cdots, 9$, i.e.
-  $\textcolor{red}{\bf x}_p^i \textcolor{red}{\bf E}$.
-  * $\textcolor{red}{\bf E}$ is a $3P^2 \times D$ matrix.
-* Prepend a learnable embedding ${\bf x}_{class}$ ("classification token") to the sequence of embedded patches to obtain
-a $10 \times D$ matrix
+* Each patch is flattened to a row vector $${\bf x}_p^i$$ of length $$3P^2$$, for $$i=1,2, \cdots, 9$$.
+* Linearly embed each of $${\bf x}_p^i$$, for $$i=1,2, \cdots, 9$$, i.e.
+  $${\color{red} {\bf x}_p^i {\bf E}}$$.
+  * $${\color{red} {\bf E}}$$ is a $$3P^2 \times D$$ matrix.
+* Prepend a learnable embedding $${\bf x}_{class}$$ ("classification token") to the sequence of embedded patches to obtain
+a $$10 \times D$$ matrix
 
  $$
  \left[
 \begin{matrix}
-\textcolor{red}{\bf x}_{class} \\
-\textcolor{red}{\bf x}_p^1  \textcolor{red}{\bf E} \\
-\textcolor{red}{\bf x}_p^2  \textcolor{red}{\bf E} \\
+{\color{red} {\bf x}_{class}}\\
+{\color{red} {\bf x}_p^1 {\bf E}} \\
+{\color{red} {\bf x}_p^2 {\bf E}} \\
 \vdots \\
-\textcolor{red}{\bf x}_p^9  \textcolor{red}{\bf E} \\
+{\color{red} {\bf x}_p^9 {\bf E}} \\
 \end{matrix}
 \right]
  $$   
 
-* Add position embeddings ${\bf E}_{pos}$ ( Eq (1) in [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929) ):
+* Add position embeddings $${\bf E}_{pos}$$ ( Eq (1) in [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929) ):
 
 $$
 {\bf z}_0 = 
  \left[
 \begin{matrix}
-\textcolor{red}{\bf x}_{class} \\
-\textcolor{red}{\bf x}_p^1  \textcolor{red}{\bf E} \\
-\textcolor{red}{\bf x}_p^2  \textcolor{red}{\bf E} \\
+{\color{red} {\bf x}_{class}}\\
+{\color{red} {\bf x}_p^1 {\bf E}} \\
+{\color{red} {\bf x}_p^2 {\bf E}} \\
 \vdots \\
-\textcolor{red}{\bf x}_p^9  \textcolor{red}{\bf E} \\
+{\color{red} {\bf x}_p^9 {\bf E}} \\
 \end{matrix}
 \right]
 +
-\textcolor{purple}{\bf E}_{pos} \ \in \mathbb{R}^{10 \times D}
+{\color{purple}{\bf E}_{pos}} \ \in \mathbb{R}^{10 \times D}
 $$   
 
 
@@ -79,21 +79,21 @@ self.cls_token = nn.Parameter(torch.randn(1, 1, dim))
 self.pos_embedding = nn.Parameter(torch.randn(1, num_patches + 1, dim))
  ```
 
-The 10 row vectors or ``embedded patches'' in ${\bf z}_0$ are fed to a standard transformer encoder, which we will describe next.
+The 10 row vectors or ``embedded patches'' in $${\bf z}_0$$ are fed to a standard transformer encoder, which we will describe next.
 
 
 
 ### Transformer Encoder
-A transformer encoder is formed by stacking $L$ transformer encoder layers. 
+A transformer encoder is formed by stacking $$L$$ transformer encoder layers. 
 
 <center width="100%"><img src="/assets/img/vit/transformer_encoder.png" width="200px"></center>
 
 
 
 
-Suppose the $l$-th layer is denoted by a function $f_{\theta^{(l)}}$, where $\theta^{(l)}$ represents the neural network paramters of the $l$-th layer.
+Suppose the $$l$$-th layer is denoted by a function $$f_{\theta^{(l)}}$$, where $$\theta^{(l)}$$ represents the neural network paramters of the $$l$$-th layer.
 
-The 10 embedded patches in ${\bf z}_0$ are fed to 
+The 10 embedded patches in $${\bf z}_0$$ are fed to 
 the first transformer encoder layer 
 $$f_{\theta^{(1)}}$$. 
 
@@ -106,13 +106,13 @@ $$ \ \ \ \ \ \ \ \vdots  $$
 $$ {\bf z}_L = f_{\theta^{(L)}} ({\bf z}_{L-1}) $$
 
 
-Note that ${\bf z}_l \in \mathbb{R}^{10 \times D}$, for $l=0, 1,2, \cdots, L$,
+Note that $${\bf z}_l \in \mathbb{R}^{10 \times D}$$, for $$l=0, 1,2, \cdots, L$$,
 
 $$ 
 {\bf z}_l = \left[ 
   \begin{matrix} 
-  && \textcolor{red}{\bf z}_l^0 &&\\
-  && \textcolor{green}{\bf z}_l^1 &&\\
+  && {\color{red}{\bf z}_l^0} &&\\
+  && {\color{green}{\bf z}_l^1} &&\\
   &&  \vdots &&\\
   && {\bf z}_{l}^{9} &&
   \end{matrix}
@@ -120,15 +120,15 @@ $$
 $$
 
 where 
-${\bf z}_l^i$ is a $1 \times D$ vector.
+$${\bf z}_l^i$$ is a $$1 \times D$$ vector.
 
-Notice how the transformer transforms the input ${\bf z}_0$ to the output ${\bf z}_L$:
+Notice how the transformer transforms the input $${\bf z}_0$$ to the output $${\bf z}_L$$:
 
 $$ 
 \left[ 
   \begin{matrix} 
-  && \textcolor{red}{\bf z}_0^0 && \\
-  && \textcolor{green}{\bf z}_0^1 &&\\
+  && {\color{red}{\bf z}_0^0} && \\
+  && {\color{green}{\bf z}_0^1} &&\\
   &&  \vdots &&\\
   && {\bf z}_{0}^{9} &&
   \end{matrix}
@@ -136,8 +136,8 @@ $$
 \rightarrow
 \left[ 
   \begin{matrix} 
-  && \textcolor{red}{\bf z}_1^0&&\\
-  && \textcolor{green}{\bf z}_1^1 &&\\
+  && {\color{red}{\bf z}_1^0} &&\\
+  && {\color{green}{\bf z}_1^1} &&\\
   &&  \vdots &&\\
   && {\bf z}_{1}^{9} &&
   \end{matrix}
@@ -145,8 +145,8 @@ $$
 \rightarrow
 \left[ 
   \begin{matrix} 
-  && \textcolor{red}{\bf z}_2^0 &&\\
-  && \textcolor{green}{\bf z}_2^1 &&\\
+  && {\color{red}{\bf z}_2^0}    &&\\
+  && {\color{green}{\bf z}_2^1}  &&\\
   &&  \vdots &&\\
   && {\bf z}_{2}^{9} &&
   \end{matrix}
@@ -156,8 +156,8 @@ $$
 \rightarrow
 \left[ 
   \begin{matrix} 
-  && \textcolor{red}{\bf z}_{L-1}^0 &&\\
-  && \textcolor{green}{\bf z}_{L-1}^1 &&\\
+  && {\color{red}{\bf z}_{L-1}^0}    &&\\
+  && {\color{green}{\bf z}_{L-1}^1}  &&\\
   &&  \vdots &&\\
   && {\bf z}_{L-1}^{9} &&
   \end{matrix}
@@ -165,32 +165,31 @@ $$
 \rightarrow
 \left[ 
   \begin{matrix} 
-  && \textcolor{red}{\bf z}_L^0 &&\\
-  && \textcolor{green}{\bf z}_L^1 &&\\
+  && {\color{red}{\bf z}_L^0}    &&\\
+  && {\color{green}{\bf z}_L^1}  &&\\
   &&  \vdots &&\\
   && {\bf z}_{L}^{9} &&
   \end{matrix}
 \right] 
 $$
 
-Using the self-attention layer in $f_{\theta^{(l)}}$, the patch embeddings in the matrix ${\bf z}_{l-1}$ communicate with each other and become the patch embeddings in ${\bf z}_l$. 
-
-For example, ${\bf z}_{l-1}^0$ talks with 
+Using the self-attention layer in $$f_{\theta^{(l)}}$$, the patch embeddings in the matrix $${\bf z}_{l-1}$$ communicate with each other and become the patch embeddings in $${\bf z}_l$$. 
+For example, $${\bf z}_{l-1}^0$$ talks with 
 $${\bf z}_{l-1}^1, {\bf z}_{l-1}^2, \cdots, {\bf z}_{l-1}^9$$ 
-to become ${\bf z}_l^0$.
+to become $${\bf z}_l^0$$.
 
 
-The input ${\bf z}_0$ and the output ${\bf z}_L$ have the same dimension, 
-and ${\bf z}_0^i$ in ${\bf z}_0$ eventually becomes ${\bf z}_L^i$ in ${\bf z}_L$
+The input $${\bf z}_0$$ and the output $${\bf z}_L$$ have the same dimension, 
+and $${\bf z}_0^i$$ in $${\bf z}_0$$ eventually becomes $${\bf z}_L^i$$ in $${\bf z}_L$$.
 
 
 ### Classification Tasks
 
-Recall that $${\bf x}_{class}$$ is the top row of ${\bf z}_0$ denoted by ${\bf z}_0^0$. 
-The patch embedding in ${\bf z}_L$ corresponding to 
-$${\bf x}_{class}$$ is its top row ${\bf z}_L^0$.
+Recall that $${\bf x}_{class}$$ is the top row of $${\bf z}_0$$ denoted by $${\bf z}_0^0$$. 
+The patch embedding in $${\bf z}_L$$ corresponding to 
+$${\bf x}_{class}$$ is its top row $${\bf z}_L^0$$.
 
-In Eq (4) of [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929), ${\bf z}_L^0$ is used for classification tasks. 
+In Eq (4) of [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929), $${\bf z}_L^0$$ is used for classification tasks. 
 Alternatively, "mean-pooling" of the patch embeddings 
 $$\frac{1}{10}\sum_{i=0}^{9} {\bf z}_L^i$$ 
 can be used.
@@ -200,15 +199,14 @@ can be used.
 
 
 
-In order to classify the image ${\bf x}$, we compute the logits as
+In order to classify the image $${\bf x}$$, we compute the logits as
 
-$${\bf o} = {\bf z}_L^0 {\bf W} + {\bf b}$$
+$${\bf o} = {\bf z}_L^0 {\bf W} + {\bf b},$$
 
-* ${\bf z}_L^0$ is a $1 \times D$ vector. 
-* $${\bf W}$$ is a $D \times  N_\mbox{class}$ matrix,
-* $${\bf b}$$ is a $1 \times N_\mbox{class}$ vector.
+where $${\bf z}_L^0$$ is a $$1 \times D$$ vector, $${\bf W}$$ is a $$D \times  N_\mbox{class}$$ matrix, and
+$${\bf b}$$ is a $$1 \times N_\mbox{class}$$ vector.
 
-Then, we determine the [Softmax](https://en.wikipedia.org/wiki/Softmax_function)
+Then, we determine the [softmax](https://en.wikipedia.org/wiki/Softmax_function)
 
 $$ 
 \mbox{Softmax}({\bf o}) = \left[ 
@@ -223,11 +221,11 @@ $$
 =
 \left[ 
   \begin{matrix} 
-  P(\mbox{bird})  \\
-  P(\mbox{ball}) \\
-  P(\mbox{car}) \\
+  P(\mbox{bird}|{\bf x})  \\
+  P(\mbox{ball}|{\bf x}) \\
+  P(\mbox{car}|{\bf x}) \\
    \vdots \\
-  P(\mbox{zebra}) 
+  P(\mbox{zebra}|{\bf x}) 
   \end{matrix}
 \right]
 $$
