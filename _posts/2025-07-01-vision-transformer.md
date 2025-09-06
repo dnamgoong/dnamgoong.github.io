@@ -176,6 +176,12 @@ $$
 The input ${\bf z}_0$ and the output ${\bf z}_L$ have the same dimension, 
 and ${\bf z}_0^i$ in ${\bf z}_0$ eventually becomes ${\bf z}_L^i$ in ${\bf z}_L$
 
+Using the self-attention layer in $f_{\theta^{(l)}}$, the patch embeddings in the matrix ${\bf z}_{l-1}$ communicate with each other and become the patch embeddings in ${\bf z}_l$. 
+
+For example, ${\bf z}_{l-1}^0$ talks with 
+$${\bf z}_{l-1}^1, {\bf z}_{l-1}^2, \cdots, {\bf z}_{l-1}^9$$ 
+to become ${\bf z}_l^0$.
+
 
 ### Classification Tasks
 
