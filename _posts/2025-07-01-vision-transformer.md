@@ -208,7 +208,7 @@ $${\bf o} = {\bf z}_L^0 {\bf W} + {\bf b}$$
 * $${\bf W}$$ is a $D \times  N_\mbox{class}$ matrix,
 * $${\bf b}$$ is a $1 \times N_\mbox{class}$ vector.
 
-Then, we determine the softmax
+Then, we determine the [Softmax](https://en.wikipedia.org/wiki/Softmax_function)
 
 $$ 
 \mbox{Softmax}({\bf o}) = \left[ 
