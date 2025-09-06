@@ -173,14 +173,15 @@ $$
 \right] 
 $$
 
-The input ${\bf z}_0$ and the output ${\bf z}_L$ have the same dimension, 
-and ${\bf z}_0^i$ in ${\bf z}_0$ eventually becomes ${\bf z}_L^i$ in ${\bf z}_L$
-
 Using the self-attention layer in $f_{\theta^{(l)}}$, the patch embeddings in the matrix ${\bf z}_{l-1}$ communicate with each other and become the patch embeddings in ${\bf z}_l$. 
 
 For example, ${\bf z}_{l-1}^0$ talks with 
 $${\bf z}_{l-1}^1, {\bf z}_{l-1}^2, \cdots, {\bf z}_{l-1}^9$$ 
 to become ${\bf z}_l^0$.
+
+
+The input ${\bf z}_0$ and the output ${\bf z}_L$ have the same dimension, 
+and ${\bf z}_0^i$ in ${\bf z}_0$ eventually becomes ${\bf z}_L^i$ in ${\bf z}_L$
 
 
 ### Classification Tasks
@@ -195,6 +196,41 @@ $$\frac{1}{10}\sum_{i=0}^{9} {\bf z}_L^i$$
 can be used.
 
 <center width="100%"><img src="/assets/img/vit/classification_on_cls.png" width="200px"></center>
+
+
+
+
+In order to classify the image ${\bf x}$, we compute the logits as
+
+$${\bf o} = {\bf z}_L^0 {\bf W} + {\bf b}$$
+
+* ${\bf z}_L^0$ is a $1 \times D$ vector. 
+* $${\bf W}$$ is a $D \times  N_\mbox{class}$ matrix,
+* $${\bf b}$$ is a $1 \times N_\mbox{class}$ vector.
+
+Then, we determine the softmax
+
+$$ 
+\mbox{Softmax}({\bf o}) = \left[ 
+  \begin{matrix} 
+  p_1  \\
+  p_2 \\
+  p_3 \\
+  \vdots \\
+  p_{N_\mbox{class}} 
+  \end{matrix}
+\right]
+=
+\left[ 
+  \begin{matrix} 
+  P(\mbox{bird})  \\
+  P(\mbox{ball}) \\
+  P(\mbox{car}) \\
+   \vdots \\
+  P(\mbox{zebra}) 
+  \end{matrix}
+\right]
+$$
 
 
 In [Phill Wang's implementation](https://github.com/lucidrains/vit-pytorch/blob/main/vit_pytorch/vit.py),
