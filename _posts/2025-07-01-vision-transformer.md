@@ -86,8 +86,16 @@ The 10 row vectors or ``embedded patches'' in $${\bf z}_0$$ are fed to a standar
 ### Transformer Encoder
 A transformer encoder is formed by stacking $$L$$ transformer encoder layers. 
 
-<center width="100%"><img src="/assets/img/vit/transformer_encoder.png" width="200px"></center>
 
+<div class="row mt-4">
+    <div class="col-sm-5 mt-3 mt-md-0">
+    </div>
+    <div class="col-sm-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/vit/transformer_encoder.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-5 mt-3 mt-md-0">
+    </div>
+</div>
 
 
 
@@ -183,18 +191,27 @@ The input $${\bf z}_0$$ and the output $${\bf z}_L$$ have the same dimension,
 and $${\bf z}_0^i$$ in $${\bf z}_0$$ eventually becomes $${\bf z}_L^i$$ in $${\bf z}_L$$.
 
 
-### Classification Tasks
+### Image Classification
 
 Recall that $${\bf x}_{class}$$ is the top row of $${\bf z}_0$$ denoted by $${\bf z}_0^0$$. 
 The patch embedding in $${\bf z}_L$$ corresponding to 
 $${\bf x}_{class}$$ is its top row $${\bf z}_L^0$$.
 
-In Eq (4) of [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929), $${\bf z}_L^0$$ is used for classification tasks. 
+In Eq (4) of [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929), $${\bf z}_L^0$$ is used for image classification. 
 Alternatively, "mean-pooling" of the patch embeddings 
 $$\frac{1}{10}\sum_{i=0}^{9} {\bf z}_L^i$$ 
 can be used.
 
-<center width="100%"><img src="/assets/img/vit/classification_on_cls.png" width="200px"></center>
+
+<div class="row mt-3">
+    <div class="col-sm-4 mt-3 mt-md-0">
+    </div>
+    <div class="col-sm-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/vit/classification_on_cls.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-5 mt-3 mt-md-0">
+    </div>
+</div>
 
 
 
