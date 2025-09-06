@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-ridge-regression",
+        },{id: "post-linear-self-attention-for-regression",
+        
+          title: "Linear Self-Attention for Regression",
+        
+        description: "Regression",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/linear-attention-for-regression/";
+          
+        },
+      },{id: "post-ridge-regression",
         
           title: "Ridge Regression",
         
