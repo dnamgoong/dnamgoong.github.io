@@ -226,8 +226,8 @@ In order to classify the image $${\bf x}$$, we compute the logits as
 
 $${\bf o} = {\bf z}_L^0 {\bf W} + {\bf b},$$
 
-where $${\bf z}_L^0$$ is a $$1 \times D$$ vector, $${\bf W}$$ is a $$D \times  N_\mbox{class}$$ matrix, and
-$${\bf b}$$ is a $$1 \times N_\mbox{class}$$ vector.
+where $${\bf z}_L^0$$ is a $$1 \times D$$ vector, $${\bf W}$$ is a $$D \times  N_\text{class}$$ matrix, and
+$${\bf b}$$ is a $$1 \times N_\text{class}$$ vector.
 
 Then, we determine the [softmax](https://en.wikipedia.org/wiki/Softmax_function)
 
@@ -238,7 +238,7 @@ $$
   p_2 \\
   p_3 \\
   \vdots \\
-  p_{N_\mbox{class}} 
+  p_{N_\text{class}} 
   \end{matrix}
 \right]^T
 =
@@ -255,7 +255,7 @@ $$
 
 where 
 
-$$p_i = \frac{\exp(o_i)}{\sum_{j=1}^{N_\mbox{class}} \exp(o_j)}$$
+$$p_i = \frac{\exp(o_i)}{\sum_{j=1}^{N_\text{class}} \exp(o_j)}$$
 
 
 In [Phill Wang's implementation](https://github.com/lucidrains/vit-pytorch/blob/main/vit_pytorch/vit.py),
