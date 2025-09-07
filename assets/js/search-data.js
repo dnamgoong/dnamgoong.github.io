@@ -60,7 +60,7 @@ ninja.data = [{
         
           title: "Vision Transformer",
         
-        description: "ViT notes",
+        description: "Study notes",
         section: "Posts",
         handler: () => {
           
