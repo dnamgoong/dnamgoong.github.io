@@ -88,7 +88,7 @@ A transformer encoder is formed by stacking $$L$$ transformer encoder layers.
 
 
 <div class="row mt-4">
-    <div class="col-sm-5 mt-3 mt-md-0">
+    <div class="col-sm-4 mt-3 mt-md-0">
     </div>
     <div class="col-sm-3 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/vit/transformer_encoder.png" class="img-fluid rounded z-depth-1" %}
@@ -99,7 +99,13 @@ A transformer encoder is formed by stacking $$L$$ transformer encoder layers.
 
 
 
-Suppose the $$l$$-th layer is denoted by a function $$f_{\theta^{(l)}}$$, where $$\theta^{(l)}$$ represents the neural network paramters of the $$l$$-th layer.
+Suppose the $$l$$-th layer is denoted by a function $$f_{\theta^{(l)}}$$, where $$\theta^{(l)}$$ represents the neural network paramters of the $$l$$-th layer. 
+The $$l$$-th layer $$f_{\theta^{(l)}}$$ consists of a self-attention layer and an MLP block.([CS182 lecture 12](https://cs182sp21.github.io/static/slides/lec-12.pdf))
+* The self-attention layer exchanges information between image patch positions.
+* The MLP post-processes the information from the previous attention layer, and prepares it for the next attention layer.
+  *  The same MLP is applied independently at every image patch position.
+
+
 
 The 10 embedded patches in $${\bf z}_0$$ are fed to 
 the first transformer encoder layer 
@@ -234,7 +240,7 @@ $$
   \vdots \\
   p_{N_\mbox{class}} 
   \end{matrix}
-\right]
+\right]^T
 =
 \left[ 
   \begin{matrix} 
@@ -244,8 +250,12 @@ $$
    \vdots \\
   P(\mbox{zebra}|{\bf x}) 
   \end{matrix}
-\right]
+\right]^T,
 $$
+
+where 
+
+$$p_i = \frac{\exp(o_i)}{\sum_{j=1}^{N_\mbox{class}} \exp(o_j)}$$
 
 
 In [Phill Wang's implementation](https://github.com/lucidrains/vit-pytorch/blob/main/vit_pytorch/vit.py),
