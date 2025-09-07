@@ -2,7 +2,7 @@
 layout: post
 title: Vision Transformer
 date: 2025-07-01
-description: ViT notes
+description: Study notes
 tags: ai transformer
 categories: 
 related_posts: false
@@ -100,7 +100,7 @@ A transformer encoder is formed by stacking $$L$$ transformer encoder layers.
 
 
 Suppose the $$l$$-th layer is denoted by a function $$f_{\theta^{(l)}}$$, where $$\theta^{(l)}$$ represents the neural network paramters of the $$l$$-th layer. 
-The $$l$$-th layer $$f_{\theta^{(l)}}$$ consists of a self-attention layer and an MLP block.([CS182 lecture 12](https://cs182sp21.github.io/static/slides/lec-12.pdf))
+The function $$f_{\theta^{(l)}}$$ consists of a self-attention layer and an MLP block ([CS182 lecture 12](https://cs182sp21.github.io/static/slides/lec-12.pdf), [Video Recording](https://www.youtube.com/watch?v=4AzsiCMw_-s&list=PL_iWQOsE6TfVmKkQHucjPAoRtIJYt8a5A&index=37)).
 * The self-attention layer exchanges information between image patch positions.
 * The MLP post-processes the information from the previous attention layer, and prepares it for the next attention layer.
   *  The same MLP is applied independently at every image patch position.
@@ -122,6 +122,7 @@ $$ {\bf z}_L = f_{\theta^{(L)}} ({\bf z}_{L-1}) $$
 
 Note that $${\bf z}_l \in \mathbb{R}^{10 \times D}$$, for $$l=0, 1,2, \cdots, L$$,
 
+
 $$ 
 {\bf z}_l = \left[ 
   \begin{matrix} 
@@ -130,11 +131,24 @@ $$
   &&  \vdots &&\\
   && {\bf z}_{l}^{9} &&
   \end{matrix}
-\right] 
+\right], 
 $$
 
 where 
 $${\bf z}_l^i$$ is a $$1 \times D$$ vector.
+
+We refer to $${\bf z}_l^i$$ as a "embedding" or a "[latent representation](https://arxiv.org/abs/2111.06377)" of the image patch $$i$$.
+
+The function $$f_{\theta^{(l)}}$$ performs the following:
+
+$$
+{\bf z}_l' = {\color{green}\mbox{MSA}}(\mbox{LN}({\bf z}_{l-1})) + {\bf z}_{l-1}
+$$
+
+$$
+{\bf z}_l = {\color{blue}\mbox{MLP}}(\mbox{LN}({\bf z}_l')) + {\bf z}_l' = f_{\theta^{(l)}} ({\bf z}_{l-1})
+$$
+
 
 Notice how the transformer transforms the input $${\bf z}_0$$ to the output $${\bf z}_L$$:
 
