@@ -7,7 +7,7 @@ tags: ai transformer
 categories: 
 related_posts: false
 toc:
-  sidebar: left
+  beginning: true
 ---
 
 
