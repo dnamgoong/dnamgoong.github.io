@@ -11,6 +11,7 @@ toc:
 ---
 
 
+### Introduction
 
  These are my study notes on [Vision Transformer](https://arxiv.org/abs/2010.11929):
 * Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, 
