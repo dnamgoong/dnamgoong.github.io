@@ -6,6 +6,8 @@ description: Regression
 tags: code math ai transformer
 categories: 
 related_posts: false
+toc:
+  beginning: true
 ---
 
 

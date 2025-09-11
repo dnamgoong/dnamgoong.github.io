@@ -138,9 +138,7 @@ $$
 $$
 
 where 
-$${\bf z}_l^i$$ is a $$1 \times D$$ vector.
-
-We refer to $${\bf z}_l^i$$ as a "embedding" or a "[latent representation](https://arxiv.org/abs/2111.06377)" of the image patch $$i$$.
+$${\bf z}_l^i$$ is a $$1 \times D$$ vector. We refer to $${\bf z}_l^i$$ as an "embedding" or a "[latent representation](https://arxiv.org/abs/2111.06377)" of the image patch $$i$$.
 
 The function $$f_{\theta^{(l)}}$$ performs the following:
 
