@@ -103,11 +103,6 @@ A transformer encoder is formed by stacking $$L$$ transformer encoder layers.
 
 
 Suppose the $$l$$-th layer is denoted by a function $$f_{\theta^{(l)}}$$, where $$\theta^{(l)}$$ represents the neural network paramters of the $$l$$-th layer. 
-The function $$f_{\theta^{(l)}}$$ consists of a self-attention layer and an MLP block ([CS182 lecture 12](https://cs182sp21.github.io/static/slides/lec-12.pdf), [Video Recording](https://www.youtube.com/watch?v=4AzsiCMw_-s&list=PL_iWQOsE6TfVmKkQHucjPAoRtIJYt8a5A&index=37)).
-* The self-attention layer exchanges information between image patch positions.
-* The MLP post-processes the information from the previous attention layer, and prepares it for the next attention layer.
-  *  The same MLP is applied independently at every image patch position.
-
 
 
 The 10 embedded patches in $${\bf z}_0$$ are fed to 
@@ -139,6 +134,12 @@ $$
 
 where 
 $${\bf z}_l^i$$ is a $$1 \times D$$ vector. We refer to $${\bf z}_l^i$$ as an "embedding" or a "[latent representation](https://arxiv.org/abs/2111.06377)" of the image patch $$i$$.
+
+
+The function $$f_{\theta^{(l)}}$$ consists of a self-attention layer and an MLP block ([CS182 lecture 12](https://cs182sp21.github.io/static/slides/lec-12.pdf), [Video Recording](https://www.youtube.com/watch?v=4AzsiCMw_-s&list=PL_iWQOsE6TfVmKkQHucjPAoRtIJYt8a5A&index=37)).
+* The self-attention layer exchanges information between image patch positions.
+* The MLP post-processes the information from the previous attention layer, and prepares it for the next attention layer.
+  *  The same MLP is applied independently at every image patch position.
 
 The function $$f_{\theta^{(l)}}$$ performs the following:
 
