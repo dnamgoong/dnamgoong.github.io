@@ -17,11 +17,13 @@ toc:
 * Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, 
 Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, 
 Jakob Uszkoreit, Neil Houlsby. 
-An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale.
+An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale, ICLR 2021.
+
+
   
 
 
-Very nice visualization of Fig.1 of [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929) by [Phil Wang (lucidrains)](https://github.com/lucidrains/vit-pytorch/blob/main/images/vit.gif):
+Very nice visualization of Fig.1 of [[Dosovitskiy et al. 2021](https://arxiv.org/abs/2010.11929)] by [Phil Wang (lucidrains)](https://github.com/lucidrains/vit-pytorch/blob/main/images/vit.gif):
 
 <center width="100%"><img src="/assets/img/vit/vit.gif" width="500px"></center>
 
@@ -52,7 +54,7 @@ a $$10 \times D$$ matrix
 \right]
  $$   
 
-* Add position embeddings $${\bf E}_{pos}$$ ( Eq (1) in [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929) ):
+* Add position embeddings $${\bf E}_{pos}$$ ( Eq (1) in [[Dosovitskiy et al. 2021](https://arxiv.org/abs/2010.11929)] ):
 
 $$
 {\bf z}_0 = 
@@ -136,7 +138,7 @@ where
 $${\bf z}_l^i$$ is a $$1 \times D$$ vector. We refer to $${\bf z}_l^i$$ as an "embedding" or a "[latent representation](https://arxiv.org/abs/2111.06377)" of the image patch $$i$$.
 
 
-The function $$f_{\theta^{(l)}}$$ consists of a self-attention layer and an MLP block ([CS182 lecture 12](https://cs182sp21.github.io/static/slides/lec-12.pdf), [Video Recording](https://www.youtube.com/watch?v=4AzsiCMw_-s&list=PL_iWQOsE6TfVmKkQHucjPAoRtIJYt8a5A&index=37)).
+The function $$f_{\theta^{(l)}}$$ consists of a self-attention layer and an MLP block ([CS182, lecture 12](https://cs182sp21.github.io/static/slides/lec-12.pdf), [Video Recording](https://www.youtube.com/watch?v=4AzsiCMw_-s&list=PL_iWQOsE6TfVmKkQHucjPAoRtIJYt8a5A&index=37)).
 * The self-attention layer exchanges information between image patch positions.
 * The MLP post-processes the information from the previous attention layer, and prepares it for the next attention layer.
   *  The same MLP is applied independently at every image patch position.
@@ -219,7 +221,7 @@ Recall that $${\bf x}_{class}$$ is the top row of $${\bf z}_0$$ denoted by $${\b
 The patch embedding in $${\bf z}_L$$ corresponding to 
 $${\bf x}_{class}$$ is its top row $${\bf z}_L^0$$.
 
-In Eq (4) of [Dosovitskiy et al.](https://arxiv.org/abs/2010.11929), $${\bf z}_L^0$$ is used for image classification. 
+In Eq (4) of [[Dosovitskiy et al. 2021](https://arxiv.org/abs/2010.11929)], $${\bf z}_L^0$$ is used for image classification. 
 Alternatively, "mean-pooling" of the patch embeddings 
 $$\frac{1}{10}\sum_{i=0}^{9} {\bf z}_L^i$$ 
 can be used.
