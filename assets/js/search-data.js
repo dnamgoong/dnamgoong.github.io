@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-linear-self-attention-for-regression",
+        },{id: "post-knowledge-distillation",
+        
+          title: "Knowledge Distillation",
+        
+        description: "study notes",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/knowledge-distillation/";
+          
+        },
+      },{id: "post-linear-self-attention-for-regression",
         
           title: "Linear Self-Attention for Regression",
         
