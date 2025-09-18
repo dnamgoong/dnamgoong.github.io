@@ -38,18 +38,45 @@ $$
 
 where $$[\mbox{softmax}({\bf o}/T)]_i$$ denotes the $$i$$-th element of the vector $$\mbox{softmax}({\bf o}/T)$$.
 
-With 
-$$o_{max} = \max_j o_j$$,
+#### Properties
+
+Assume 
+
+$$o_{i^*} > o_j,$$ 
+
+for $$j \neq i^*$$, i.e. $$o_{i^*} = \max_j o_j.$$
+
 
 $$ 
 p_i 
 = \frac{ \exp\left(\frac{o_i}{T}\right) } { \sum_j \exp\left(\frac{o_j}{T}\right)} 
 = \frac{ \exp\left(\frac{o_i}{T}\right) } { \sum_j \exp\left(\frac{o_j}{T}\right)} 
-\left( \frac{\exp\left(-\frac{o_{max}}{T}\right)}{\exp\left(-\frac{o_{max}}{T}\right)} \right)
-= \frac{ \exp\left(\frac{o_i-o_{max}}{T}\right) } { \sum_j \exp\left(\frac{o_j-o_{max}}{T}\right)},
+\left( \frac{\exp\left(-\frac{o_{i^*}}{T}\right)}{\exp\left(-\frac{o_{i^*}}{T}\right)} \right)
+= \frac{ \exp\left(\frac{o_i-o_{i^*}}{T}\right) } { \sum_j \exp\left(\frac{o_j-o_{i^*}}{T}\right)},
 $$
 
-From this, we can observe that
+
+$$
+p_{i} = \frac{\exp\left(\frac{o_i-o_{i^*}}{T}\right)} { 1 + \sum_{j\neq i^*} \exp\left(\frac{o_j-o_{i^*}}{T}\right)},
+$$
+ 
+$$
+p_{i^*} = \frac{1} { 1 + \sum_{j\neq i^*} \exp\left(\frac{o_j-o_{i^*}}{T}\right)}
+$$
+
+As $$T \rightarrow 0$$, 
+* $$\exp\left(\frac{o_j-o_{i^*}}{T}\right) \rightarrow 0$$ for $$j \neq i^*$$  
+* $$p_{i^*} \rightarrow 1$$.
+* $$p_i \rightarrow 0$$, for $$i\neq i^*$$. 
+ 
+
+As $$T \rightarrow \infty$$, 
+* $$\exp\left(\frac{o_j-o_{i^*}}{T}\right) \rightarrow 1$$, for all $$j$$.
+* $$p_i  \rightarrow \frac{1}{N_\text{class}}$$.
+
+
+
+**Summary**:
 * As $$T \rightarrow 0$$, the softmax outputs $$p_i$$ approaches either 0 or 1.
 * As $$T \rightarrow \infty$$, the softmax outputs $$p_i$$ become more uniform.
 
