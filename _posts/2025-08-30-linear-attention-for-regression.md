@@ -15,7 +15,7 @@ toc:
 
 ## Introduction
 
-In this post, we implement the linear attention layer based regression described in [Lu et al.](https://arxiv.org/abs/2405.11751)
+In this post, we implement the linear attention layer based regression described in [[Lu et al. 2024](https://arxiv.org/abs/2405.11751)]
 * Yue M. Lu, Mary I. Letey, Jacob A. Zavatone-Veth, Anindita Maiti, and Cengiz Pehlevan, Asymptotic theory of in-context learning by linear attention.
   * Blog: Mary Letey, [Solvable Model of In-Context Learning Using Linear Attention](https://kempnerinstitute.harvard.edu/research/deeper-learning/solvable-model-of-in-context-learning-using-linear-attention/), July 2025.
 
@@ -23,10 +23,10 @@ In this post, we implement the linear attention layer based regression described
 
 
 
-[Raventos et al.](https://arxiv.org/abs/2306.15063) uses a transformer model to study the emergence of in-context learning for regression, whereas [Lu et al.](https://arxiv.org/abs/2405.11751) uses a simple linear self-attention layer.
+[[Raventos et al. 2023](https://arxiv.org/abs/2306.15063)] uses a transformer model to study the emergence of in-context learning for regression, whereas [[Lu et al. 2023](https://arxiv.org/abs/2405.11751)] uses a simple linear self-attention layer.
 
 
-To be consistent with [my previous post](https://dnamgoong.github.io/blog/2025/ridge/) on ridge regression, we will use the same notations from [Raventos et al.](https://arxiv.org/abs/2306.15063).
+To be consistent with [my previous post](https://dnamgoong.github.io/blog/2025/ridge/) on ridge regression, we will use the same notations from [[Raventos et al. 2023](https://arxiv.org/abs/2306.15063)].
 
 
 
@@ -50,7 +50,7 @@ But, for a pre-training dataset, we sample {$${\bf w}^{(1)}, {\bf w}^{(2)}, \cdo
 * Each batch element is generated using one of the $$M$$ tasks {$${\bf w}^{(1)}, {\bf w}^{(2)}, \cdots, {\bf w}^{(M)}$$}.
 
 
-In [Raventos et al.](https://arxiv.org/abs/2306.15063), the distrubtion of $${\bf w}$$ in the pretraining data is denoted by 
+In [[Raventos et al. 2023](https://arxiv.org/abs/2306.15063)], the distrubtion of $${\bf w}$$ in the pretraining data is denoted by 
 
 $$
 \mathcal{T}_{pretrain} = \mathcal{U} ({\bf w}^{(1)}, {\bf w}^{(2)}, \cdots, {\bf w}^{(M)} )
@@ -70,7 +70,7 @@ To quantify the accuracy of the predictions, the MSE is used; the average square
 
 ## A Linear Self-Attention Layer for Regression 
 
-We will provide a summary of the in-context learning model used in [Lu et al.](https://arxiv.org/abs/2405.11751). 
+We will provide a summary of the in-context learning model used in [[Lu et al. 2024](https://arxiv.org/abs/2405.11751)]. 
 
 The embedding of the prompt including the query is represented by a $$(D+1) \times K$$ matrix $$Z$$,
 
@@ -86,7 +86,7 @@ $$
 Each column of $$Z$$ is called a token.
 
 
-$$H_Z$$ is a $$D \times (D+1)$$ matrix defined for each prompt (See Eq (11) of [Lu et al.](https://arxiv.org/abs/2405.11751)),
+$$H_Z$$ is a $$D \times (D+1)$$ matrix defined for each prompt (See Eq (11) of [[Lu et al. 2024](https://arxiv.org/abs/2405.11751)]),
 
 $$
 H_Z = {\bf x}_{K} \left[ \frac{D}{K-1} \sum_{i=1}^{K-1} y_i {\bf x}_i^T, \ \ \frac{1}{K-1} \sum_{i=1}^{K-1} y_i^2 \right],

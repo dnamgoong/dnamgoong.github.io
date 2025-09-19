@@ -13,7 +13,7 @@ toc:
 
 ### Introduction
 
- These are my study notes on [Vision Transformer](https://arxiv.org/abs/2010.11929):
+ These are my study notes on [Vision Transformers](https://arxiv.org/abs/2010.11929):
 * Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, 
 Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, 
 Jakob Uszkoreit, Neil Houlsby. 

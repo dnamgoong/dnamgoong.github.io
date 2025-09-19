@@ -44,8 +44,14 @@ Assume
 
 $$o_{i^*} > o_j,$$ 
 
-for $$j \neq i^*$$, i.e. $$o_{i^*} = \max_j o_j.$$
+for $$j \neq i^*$$.s
 
+In other words,
+
+$$o_{i^*} = \max_j o_j.$$
+
+
+The probability $$p_i$$ can be rewritten as
 
 $$ 
 p_i 
@@ -64,15 +70,16 @@ $$
 p_{i^*} = \frac{1} { 1 + \sum_{j\neq i^*} \exp\left(\frac{o_j-o_{i^*}}{T}\right)}
 $$
 
+
 As $$T \rightarrow 0$$, 
-* $$\exp\left(\frac{o_j-o_{i^*}}{T}\right) \rightarrow 0$$ for $$j \neq i^*$$  
+* $$\exp\left(\frac{o_j-o_{i^*}}{T}\right) \rightarrow 0,$$ for $$j \neq i^*$$  
 * $$p_{i^*} \rightarrow 1$$.
-* $$p_i \rightarrow 0$$, for $$i\neq i^*$$. 
+* $$p_i \rightarrow 0,$$ for $$i\neq i^*$$. 
  
 
 As $$T \rightarrow \infty$$, 
-* $$\exp\left(\frac{o_j-o_{i^*}}{T}\right) \rightarrow 1$$, for all $$j$$.
-* $$p_i  \rightarrow \frac{1}{N_\text{class}}$$.
+* $$\exp\left(\frac{o_j-o_{i^*}}{T}\right) \rightarrow 1,$$ for all $$j$$.
+* $$p_i  \rightarrow \frac{1}{N_\text{class}},$$ for all $$j$$.
 
 
 
@@ -86,7 +93,7 @@ As $$T \rightarrow \infty$$,
 
 ### Distilling the knowledge of the teacher into the student
 
-Geoffrey Hinton introduced the idea of knowledge distillation in [Hinton et al. 2015](https://arxiv.org/abs/1503.02531), as a way to train a small neural network.
+Geoffrey Hinton introduced the idea of knowledge distillation in [[Hinton et al. 2015](https://arxiv.org/abs/1503.02531)], as a way to train a small neural network.
 
 
 In knowledge distillation, we have two models.
@@ -209,7 +216,7 @@ $$\mathcal{L}_{CE} \left( \mbox{softmax}(Z_s^{\mbox{CLS}}), \ y \right)$$
   * The distillation loss $$\mathcal{L}_{\mbox{teacher}}$$
 
 
-Soft distillation:
+##### Soft distillation
 *  
   
   $$\mathcal{L}_{global} = (1-\lambda) \mathcal{L}_{CE} \left( \mbox{softmax}(Z_s^{\mbox{CLS}}), \ y \right)
