@@ -12,6 +12,7 @@ profile:
     <p> Westview High School </p>
     <p> San Diego, CA </p>
 
+Hello! This is my Deep Learning blog. I post my study notes of research papers. I hope you find this interesting!
 
 latest_posts:
   enabled: true
