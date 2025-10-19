@@ -209,11 +209,8 @@ Training data-efficient image transformers & distillation through attention. [ar
 **Summary**
 * Teacher = a ConvNet
 * Training objective is a linear combination of
-  * The supervised training loss 
-
-$$\mathcal{L}_{CE} \left( \mbox{softmax}(Z_s^{\mbox{CLS}}), \ y \right)$$
-
-  * The distillation loss $$\mathcal{L}_{\mbox{teacher}}$$
+  * The supervised training loss: $$\mathcal{L}_{CE} \left( \mbox{softmax}(Z_s^{\mbox{CLS}}), \ y \right)$$
+  * The distillation loss:  $$\mathcal{L}_{\mbox{teacher}}$$
 
 
 ##### Soft distillation
