@@ -44,7 +44,7 @@ Assume
 
 $$o_{i^*} > o_j,$$ 
 
-for $$j \neq i^*$$.s
+for $$j \neq i^*$$.
 
 In other words,
 
