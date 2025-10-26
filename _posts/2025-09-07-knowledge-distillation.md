@@ -98,7 +98,8 @@ Geoffrey Hinton introduced the idea of knowledge distillation in [[Hinton et al.
 
 In knowledge distillation, we have two models.
 * A **teacher** model -- a big trained neural network. 
-    * It is easier to train because "cumbersome models (teacher) can easily extract structure from data." [[Hinton et al. 2015](https://arxiv.org/abs/1503.02531)]
+    * It is easier to train because "cumbersome models (teacher) can easily extract structure from data." [[Hinton et al. 2015](https://arxiv.org/abs/1503.02531)] 
+    * Ref: Andrej Karpathy, [Wny "the models have to first get larger before they can get smaller"](https://x.com/karpathy/status/1814038096218083497), July, 2024. 
 * A **student** model -- a small neural network, which may not be easy to train.
 
 Given an image of a BMW $${\bf x}$$, the teacher's softmax layer output may show that
