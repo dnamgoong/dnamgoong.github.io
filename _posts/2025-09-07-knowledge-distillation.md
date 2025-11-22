@@ -177,6 +177,15 @@ suitably soft set of targets.
 
 
 
+#### Why does a Teacher model need to be large?
+
+In [his post on X](https://x.com/karpathy/status/1814038096218083497), Andrej Karpathy explains why large models are necessary in the context of current large language models (LLMs). 
+Today's models are so large because the standard training objective makes them memorize the internet, while also disentangling examples of thinking from knowledge in the training data.
+
+
+
+
+
 ### Data-efficient image Transformers (DeiT)
  
  References:
@@ -223,3 +232,5 @@ Training data-efficient image transformers & distillation through attention. [ar
 *  
   
   $$ \mathcal{L}_{\mbox{teacher}} = KL \left(\mbox{softmax}(Z_t/T) \ \Vert \ \mbox{softmax}(Z_s/T) \right)$$
+
+
