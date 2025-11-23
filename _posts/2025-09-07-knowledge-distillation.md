@@ -15,7 +15,7 @@ toc:
 
 These are my study notes on knowledge distillation. 
 
-"distillation" is a kind of training that transfers the knowledge from one model to another ([Hinton et al. 2015](https://arxiv.org/abs/1503.02531)).
+"distillation" is a kind of training that transfers the knowledge from one model to another [[Hinton et al. 2015](https://arxiv.org/abs/1503.02531)].
 
 
 
