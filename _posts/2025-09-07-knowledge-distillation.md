@@ -109,7 +109,7 @@ $$ P(\mbox{ garbage truck } | \ {\bf x} ) \gg P( \mbox{ carrot } | \ {\bf x} ) $
 Hinton argues that probability for incorrect answers tell us a lot about how the teacher tends to generalize. 
 
 We want the student model to generalize in the same way as the teacher model.
-For an image classification task, rather than training the student model from scratch using ground-truth labels (e.g., cats, dogs, etc), we train the student model to mimick the softmax outputs from the teacher model, in order to transfer the generalization ability of the teacher model to a student model.
+For an image classification task, rather than training the student model from scratch using ground-truth labels (e.g., cats, dogs, etc), we train the student model to mimic the softmax outputs from the teacher model, in order to transfer the generalization ability of the teacher model to a student model.
 
 
 
